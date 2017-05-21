@@ -66,6 +66,8 @@ module Pundit
         object.model_name.param_key.to_s
       elsif object.is_a?(Class)
         object.to_s.demodulize.underscore
+      elsif object.is_a?(Array)
+        object.last.class.to_s.demodulize.underscore
       else
         object.class.to_s.demodulize.underscore
       end
